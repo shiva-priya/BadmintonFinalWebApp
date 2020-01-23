@@ -11,7 +11,7 @@ function loadPlayer( ){
      pformContainer.appendChild(pform2);
     document.body.appendChild(pformContainer);
     pcall += 1;
-    window.stop();
+   // window.stop();
 
 
 }
@@ -329,16 +329,18 @@ function validatePlayerLogIn(){
                   email : email,
                   password : password
           }, function(responseText) {
-                    alert(responseText);
-                   // e.preventDefault();
+                   //alert(responseText);
+                    //e.preventDefault();
 
-                    console.log(responseText);
-               if(responseText=="s"){
+                    //console.log(responseText);
+               if(responseText.includes("<html>") || responseText=="s"){
+
+                      //alert("login");
                         window.location.replace("playerDetails.html");
                         }
                 else{
-                      alert(responseText);
-                      window.location.replace("adminReg.html");
+                      //alert(responseText);
+                      window.location.replace("playerReg.html");
                 }
           });
      });

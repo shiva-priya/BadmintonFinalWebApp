@@ -10,3 +10,13 @@ firstName varchar(25), lastName varchar(25), email varchar(40), gender varchar(1
 image varchar(100) default '', phone varchar(13) , type varchar(15), shirtSize varchar(10), empId int unique, age int,
 matchesPlayed int, position int, bidStatus int default '-1', password varchar(30), primary key (empId)
 );
+
+
+
+create table tourmentable (
+teamId int auto_increment, name varchar(40), winPrize int default 0, runPrize int default 0, location varchar(40)
+default null, empId int default null, primary key (teamId));
+
+
+create table RegisteredTournaments
+(email varchar(100), trnName varchar(100));

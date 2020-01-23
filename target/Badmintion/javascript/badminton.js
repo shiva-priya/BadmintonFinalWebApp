@@ -1,18 +1,12 @@
 
-     function newLoad(){
-        const body = document.body;
-        body.removeChild(document.getElementById('navbar'));
-              try{
-                       body.removeChild(document.getElementById('playerForm'));
-              }catch(error){
-                 try{
-                     body.removeChild(document.getElementById('adminForm'));
-                 }catch(error){}
-              }
-              loadHome();
-     }
+//     function newLoad(){
+//               loadHome();
+              
+//      }
 
 function loadHome(){
+
+     
 
       var navbar=document.createElement('nav');
       navbar.setAttribute('class','homebar');
@@ -66,7 +60,7 @@ function loadHome(){
 
     var menu2=document.createElement("a");
      menu2.setAttribute('class','stats');
-     menu2.href="#";
+     menu2.href="playerStats.html";
      menu2.textContent='Player stats';
      list1.appendChild(menu2);
 
@@ -76,7 +70,7 @@ function loadHome(){
 
     var menu3=document.createElement("a");
      menu3.setAttribute('class','stats');
-     menu3.href="#";
+     menu3.href="tournaments.html";
      menu3.textContent='Tournaments';
    
      list2.appendChild(menu3);
@@ -119,28 +113,33 @@ function loadHome(){
     }
     
     
-     const div1 = document.createElement('div');
-     div1.setAttribute('id','appp');
+     
     
-     $(document).ready(function(){
+     
       $(document).on("click","#logoutBtn", function(){
   
             $.post('LogOut', {}, function(responseText) {
-                      alert(responseText);
+                      //alert(responseText);
                      // e.preventDefault();
                      console.log(cookie);
   
                       console.log(responseText);
-                 if(responseText=="s"){
+                 if(responseText.includes("<html>") || responseText=="s"){
+                        window.location.reload();
                          window.location.replace("index.html");
                           }
                   else{
                         alert(responseText);
                         //window.location.replace("playerReg.html");
                   }
+                  var data = document.cookie.split("=");
+                  if(data[1] != null){
+                        window.location.reload();
+                        window.location.replace("index.html");
+                  }
             });
        });
-      });
+     
 
 }
 

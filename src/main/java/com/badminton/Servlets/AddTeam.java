@@ -23,7 +23,7 @@ public class AddTeam  extends HttpServlet {
         db = new PlayerDB();
         Cookie[] cook = req.getCookies();
         String tournName = cook[2].getValue();
-
+        System.out.println("add team called");
 
         // System.out.println(cook[0].getValue());
         //String tournamentName = ;
@@ -41,7 +41,8 @@ public class AddTeam  extends HttpServlet {
 
         for(int i=0;i<players.length;++i){
             String[] name = players[i].trim().split(" ");
-            String query = "update users set team = '"+teamName+"' where firstName = '"+name[0]+"' and lastName ='"+name[1]+"';";
+            System.out.println(name);
+            String query = "update users set team = '"+teamName+"' where firstName = '"+name[0]+"';";
             int kres =db.playersTeamUpdate(query);
             System.out.println(kres);
             System.out.println(query);

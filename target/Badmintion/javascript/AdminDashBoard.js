@@ -1,13 +1,31 @@
 //window.onload = showDisplay();
 
 function AdminDash(){
-    var cookie = document.cookie;
-    if(cookie.length<2)
+     var da = document.cookie.split("=");
+     var d = document.cookie.split(" ");
+     var email = d[0].split("=");
+     if( d[1] != undefined){
+     var name = d[1].split("=");
+    var cooks = document.cookie.split(";");
+    var flag = false;
+    for(let i=0;i<cooks.length;i++){
+        var valOfCook = cooks[i].trim().split("=");
+        if(valOfCook[1].includes("@") || valOfCook[1] != null || valOfCook != ""){
+            flag = true;
+        }
+    }
+    if(flag === false){
         window.location.replace("index.html");
+        
+    }
     else{
         loadHome();
         showDisplay();
     }
+     }
+     else{
+        window.location.replace("playerDetails.html");
+     }
 }
 
 
@@ -27,7 +45,7 @@ function showDisplay()
     image.className = "tasklogo";
     div.appendChild(image);
 
-    div.setAttribute('onclick','location.href="Scheduler.html"');
+    div.setAttribute('onclick','location.href="scheduler.html"');
     Conatainer.appendChild(div);
 
     var div = document.createElement('div');
@@ -48,7 +66,7 @@ function showDisplay()
     var header = document.createElement('h2');
     header.textContent = "Add Team";
     div.appendChild(header);
-
+    div.setAttribute('onclick','location.href="addteam.html"');
     var image = document.createElement('img');
     image.src = "https://cdn5.vectorstock.com/i/1000x1000/15/39/people-logo-round-circle-of-group-vector-16671539.jpg";
     image.className = "tasklogo";

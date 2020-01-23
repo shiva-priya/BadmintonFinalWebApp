@@ -119,6 +119,7 @@ function UIfunction(details){
     tbutton.setAttribute('id','tbutton');
     tbutton.setAttribute('type','button');
     tbutton.setAttribute('value','Create Tournament');
+    tbutton.setAttribute('class','adfun');
   //  tbutton.setAttribute('onclick','TournamentForm()')
    // tbutton.setAttribute('name',"Create Tournament");
 
@@ -127,10 +128,26 @@ function UIfunction(details){
    adminbtn.setAttribute('id','adminbtn');
    adminbtn.setAttribute('type','button');
    adminbtn.setAttribute('value','Admin Dashboard');
+   adminbtn.setAttribute('class','adfun');
+
+
+   var joinbtn = document.createElement('input');
+   joinbtn.setAttribute('id','joinbtn');
+   joinbtn.setAttribute('type','button');
+   joinbtn.setAttribute('value','Join a Tournament');
+   joinbtn.setAttribute('class','adfun');
+
+   var showbtn = document.createElement('input');
+   showbtn.setAttribute('id','showbtn');
+   showbtn.setAttribute('type','button');
+   showbtn.setAttribute('value','View Joined Tournaments');
+   showbtn.setAttribute('class','adfun');
 
     //document.body.appendChild(tdiv);
     tdiv.appendChild(adminbtn);
     tdiv.appendChild(tbutton);
+    tdiv.appendChild(joinbtn);
+    tdiv.appendChild(showbtn);
 
 
     var container = document.createElement('div');
@@ -148,12 +165,12 @@ function oldTour(){
     newtndiv.innerHTML =
   
     `
-    <div id="id01" class="modal">
+    <div id="id02" class="modal">
   
   <div class="modal-content animate" >
     <div class="container">
       <label for="trnName"><b>Tournament Name</b></label>
-      <input type="text" placeholder="Enter Tournament" name="trnName" id="tnmae" required>
+      <input type="text" placeholder="Enter Created Tournament" name="trnName" id="ctname" required>
 
         
       <button type="button" id= "createtour" onclick="goToTour()">Create Tournament!</button>
@@ -161,16 +178,13 @@ function oldTour(){
     </div>
 
     <div class="container" style="background-color:#f1f1f1">
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+      <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
       <span class="psw"> Go to created Tournament</span>
     </div>
   </div>
 </div>
 
-    
- 
     `
-
   document.body.appendChild(newtndiv);
 }
 
@@ -259,7 +273,7 @@ function createTags(ele,selector,name){
 $(document).on("click","#adminbtn", function(){
   
     oldTour();
-    document.getElementById('id01').style.display='block';
+    document.getElementById('id02').style.display='block';
       
  
  });
@@ -275,9 +289,6 @@ $(document).on("click","#tbutton", function(){
 
 
 function onclickF(e){
-
- 
-
      var tourName = $('#tnmae').val();
      var tourLoc = $('#tloc').val();
      var tourWinP = $('#twinp').val();
@@ -289,7 +300,7 @@ function onclickF(e){
          var email= d[0].split("=")[1];
      }
         console.log("post method");
-        alert("post method"); 
+        //alert("post method"); 
           $.post('CreateTournament', {
             trnName : tourName,
             tloc : tourLoc,
@@ -318,3 +329,47 @@ function onclickF(e){
    
     return false;
 }
+
+
+function goToTour()
+{
+  var tourName = $('#ctname').val();
+  var d = document.cookie.split(";");
+     if(d[1] == null){
+    var email = document.cookie.split("=")[1];
+     }else{
+         var email= d[0].split("=")[1];
+     }
+
+     $.post('ExistingTournament', {
+      trnName : tourName,
+      email : email
+    }, function(responseText) {
+              alert(responseText);
+              //e.preventDefault();
+              console.log(responseText);
+              if(responseText.includes("<html>") || responseText=="s"){
+
+                //alert("login");
+                  window.location.replace("AdminDashboard.html");
+                  var c = document.cookie.split(" ");
+                  alert(c[0]);
+                  alert(c[1]);
+                  }
+          else{
+                alert(responseText);
+                window.location.reload();
+          }
+    });
+
+}
+
+
+$(document).on("click","#joinbtn", function(){
+  window.location.replace("JoinTour.html");
+});
+ 
+
+$(document).on("click","#showbtn", function(){
+  window.location.replace("JoinedTrn.html");
+});

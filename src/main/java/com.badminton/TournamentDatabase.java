@@ -16,7 +16,8 @@ public class TournamentDatabase {
             try {
                 String query = "insert into tourmentable(name,winPrize,runPrize,location,empId) values('" + name + "','" + wPrize + "','" + rPrize + "','" + loc + "','"+id+"') ;";
                 System.out.println(query);
-                stmt.executeUpdate(query);
+                int k  = stmt.executeUpdate(query);
+                System.out.println(k);
             }catch (SQLException s){
                 s.printStackTrace();
             }
@@ -45,5 +46,41 @@ public class TournamentDatabase {
             return null;
         }
     }
+
+    public ResultSet getJoined(String email)
+    {
+        String query = "select distinct trnName from RegisteredTournaments where email ='"+email+"';";
+        try
+        {
+            ResultSet res = stmt.executeQuery(query);
+            return res;
+        }
+        catch (SQLException e  )
+        {
+            return null;
+        }
+    }
+
+
+    public int joinTourn(String email, String trnName)
+    {
+        String query = "insert into RegisteredTournaments(email, trnName) values ('"+email +"','"+trnName+"');";
+        System.out.println("In joinTourn ");
+        try
+        {
+            System.out.println(query);
+           int  rs = stmt.executeUpdate(query);
+         //   System.out.println(rs.next());
+           // return rs.next();
+            System.out.println(rs);
+            return rs;
+
+        }
+        catch (SQLException e)
+        {
+            return 0;
+        }
+    }
+
 
 }

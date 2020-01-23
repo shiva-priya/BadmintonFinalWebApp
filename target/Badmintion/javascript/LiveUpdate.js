@@ -71,52 +71,31 @@ players.textContent="Select Players";
 
 var dropdownp1=document.createElement('select');
 dropdownp1.setAttribute('class','dropbox');
+dropdownp1.setAttribute('id','Aplayers');
 
 var option_pta=document.createElement('option');
 option_pta.textContent="Team A";
 
-var option1_pta=document.createElement('option');
-option1_pta.textContent="player 1";
 
-var option2_pta=document.createElement('option');
-option2_pta.textContent="player 2";
-
-var option3_pta=document.createElement('option');
-option3_pta.textContent="player 3";
-
-var option4_pta=document.createElement('option');
-option4_pta.textContent="player 4";
 
 liveupdateContainer.appendChild(players);
 liveupdateContainer.appendChild(dropdownp1);
 dropdownp1.appendChild(option_pta);
-dropdownp1.appendChild(option1_pta);
-dropdownp1.appendChild(option2_pta);
-dropdownp1.appendChild(option3_pta);
-dropdownp1.appendChild(option4_pta);
+
 
 
 var dropdownp2=document.createElement('select');
 dropdownp2.setAttribute('class','dropbox');
+
+dropdownp2.setAttribute('id','Bplayers');
 var option_ptb=document.createElement('option');
 option_ptb.textContent="Team B";
-var option1_ptb=document.createElement('option');
-option1_ptb.textContent="player 1";
-var option2_ptb=document.createElement('option');
-option2_ptb.textContent="player 2";
 
-var option3_ptb=document.createElement('option');
-option3_ptb.textContent="player 3";
-var option4_ptb=document.createElement('option');
-option4_ptb.textContent="player 4";
 
 
 liveupdateContainer.appendChild(dropdownp2);
 dropdownp2.appendChild(option_ptb);
-dropdownp2.appendChild(option1_ptb);
-dropdownp2.appendChild(option2_ptb);
-dropdownp2.appendChild(option3_ptb);
-dropdownp2.appendChild(option4_ptb);
+
 
 
 
@@ -252,6 +231,41 @@ $(document).ready(function(){
                     document.getElementById('teamADrop').appendChild(option1_ptb);
                     console.log("2");
                     }
+                    $(document).ready(function(){
+                        $("#Aplayers").one('click',function(){
+                    
+                        
+                              $.get('GetPlayersA',{
+                                    team : $("#teamADrop").val()
+                              } 
+                              , function(responseText) {
+                                    list = JSON.parse(responseText);
+                                    
+                                   if(list.length > 0){
+                
+                                    var s = document.getElementById('Aplayers');
+                                  
+                                    for(let i = 0;i<list.length;i++){
+                                          // console.log(lis[i]);
+                                          // console.log(id);
+                                          var option1_ptb=document.createElement('option');
+                                          option1_ptb.setAttribute('id','optnA'+String(i));
+                                          option1_ptb.textContent=list[i];
+                                         // option1_ptb.setAttribute('onclick','setTeam('teamADrop')');
+                                          document.getElementById('Aplayers').appendChild(option1_ptb);
+                                          console.log("2");
+                                          } 
+                                    
+                                    
+                                   }
+                                    else{
+                                          alert(responseText);
+                                          
+                                    }
+                              });
+                         });
+                        });
+            
                     
                 }
             
@@ -276,7 +290,40 @@ $(document).ready(function(){
                     var s = document.getElementById('teamBDrop');
                   
                        getTeams();   
+                       $(document).ready(function(){
+                        $("#Bplayers").one('click',function(){
                     
+                        
+                              $.get('GetPlayersA',{
+                                    team : $("#teamBDrop").val()
+                              } 
+                              , function(responseText) {
+                                    list = JSON.parse(responseText);
+                                    
+                                   if(list.length > 0){
+                
+                                    var s = document.getElementById('Bplayers');
+                                  
+                                    for(let i = 0;i<list.length;i++){
+                                          // console.log(lis[i]);
+                                          // console.log(id);
+                                          var option1_ptb=document.createElement('option');
+                                          option1_ptb.setAttribute('id','optnA'+String(i));
+                                          option1_ptb.textContent=list[i];
+                                         // option1_ptb.setAttribute('onclick','setTeam('teamADrop')');
+                                          document.getElementById('Bplayers').appendChild(option1_ptb);
+                                          console.log("2");
+                                          }
+                                    
+                                    
+                                   }
+                                    else{
+                                          alert(responseText);
+                                          
+                                    }
+                              });
+                         });
+                        });
                     
                    }
                     else{
@@ -287,7 +334,7 @@ $(document).ready(function(){
          });
         });
     
+       
+           
       
-
-   
     

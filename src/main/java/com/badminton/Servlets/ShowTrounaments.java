@@ -21,7 +21,7 @@ public class ShowTrounaments extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         TournamentDatabase db = new TournamentDatabase();
-            ResultSet rs = db.getAll();
+        ResultSet rs = db.getAll();
         TourList tlist = new TourList();
             ArrayList<Tournament> tourList = new ArrayList<>();
             PrintWriter pw = resp.getWriter();
@@ -44,5 +44,25 @@ public class ShowTrounaments extends HttpServlet {
                 e.printStackTrace();
             }
 
+    }
+
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        PrintWriter out = resp.getWriter();
+        String email = req.getParameter("email");
+        String trnName =  req.getParameter("trnName");
+        //out.write(email+" "+trnName);
+
+        TournamentDatabase tdb = new TournamentDatabase();
+        int res = tdb.joinTourn(email, trnName);
+        if(res==1)
+        {
+          out.write("s");
+        }
+        else
+        {
+            out.write("f");
+        }
     }
 }

@@ -211,4 +211,26 @@ public class PlayerDB {
         }
     }
 
+
+    public ArrayList<String> getTeams(String trnName) {
+        ArrayList<String> result = new ArrayList<>();
+        String query = "select distinct teamName from TournamentTeams where tournamentName = ' "+trnName +"';";
+        try
+        {
+            ResultSet rs = stmt.executeQuery(query);
+            while(rs.next())
+            {
+                // System.out.println(rs.getString("teamName"));
+                result.add(rs.getString("teamName"));
+            }
+            //System.out.println(result);
+            return result;
+        }
+
+        catch (SQLException e)
+        {
+            return result;
+        }
+    }
+
 }

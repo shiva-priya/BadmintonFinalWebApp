@@ -49,6 +49,8 @@ public class PlayerLogIn extends HttpServlet {
            // System.out.println(requestDispatcher.);
             //requestDispatcher.forward(req, resp);
             out.write("s");
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("playerDetails.html");
+            requestDispatcher.forward(req,resp);
         }
         else
         {
