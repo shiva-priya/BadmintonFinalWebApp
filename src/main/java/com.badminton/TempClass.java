@@ -12,8 +12,16 @@ public class TempClass {
 
     public static void main(String args[]) throws ParseException {
 
-        SchedulerLogic sl = new SchedulerLogic();
-        sl.createMatches("2020/12/10",3,2,"pramati");
+        TournamentDatabase db = new TournamentDatabase();
+        //PlayerDB pdb = new PlayerDB();
+        //pdb.updatePlayerPoints("shiva",3);
+        db.getliveScore();
+
+        //db.getJoined("spriya@a");
+      //  db.updateTeamPoints("purple",3," summer");
+
+      //  SchedulerLogic sl = new SchedulerLogic();
+        //sl.createMatches("2020/12/10",3,2,"pramati");
         /*
         SchedulerLogic sl = new SchedulerLogic();
       //  sl.createMatches();

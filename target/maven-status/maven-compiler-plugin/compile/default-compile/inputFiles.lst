@@ -4,6 +4,7 @@
 /home/priyad/Documents/TeamProject/badminton/src/main/java/com.badminton/PlayerList.java
 /home/priyad/Documents/TeamProject/badminton/src/main/java/com/badminton/Servlets/LogOut.java
 /home/priyad/Documents/TeamProject/badminton/src/main/java/com/badminton/Servlets/AdminSignUp.java
+/home/priyad/Documents/TeamProject/badminton/src/main/java/com/badminton/Servlets/LiveScoreUpdate.java
 /home/priyad/Documents/TeamProject/badminton/src/main/java/com/badminton/Servlets/Scheduler.java
 /home/priyad/Documents/TeamProject/badminton/src/main/java/com/badminton/Servlets/TeamList.java
 /home/priyad/Documents/TeamProject/badminton/src/main/java/com/badminton/Servlets/PlayerDetails.java

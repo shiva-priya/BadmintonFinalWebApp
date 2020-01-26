@@ -189,6 +189,49 @@ function oldTour(){
 }
 
 
+function showTour(responseText){
+  var newtndiv = document.createElement('div');
+ // newtndiv.innerHTML =
+
+ var iddiv = document.createElement('div');
+ iddiv.setAttribute('id','id02');
+ iddiv.setAttribute('class','modal');
+
+  var mdiv = document.createElement('div');
+  mdiv.setAttribute('class','modal-content animate');
+  
+  var cdiv = document.createElement('div');
+  cdiv.setAttribute('class','container');
+
+  var content = document.createElement('div');
+  content.setAttribute('class','container');
+  content.innerText = responseText ;
+
+  var ndiv = document.createElement('div');
+  ndiv.innerHTML =
+
+  ` <div class="container" style="background-color:#f1f1f1">
+  <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+  <button type="button" onclick="viewtrn()" class="tourbtn">View All Tournaments</button>
+  <span class="psw">Click on Toournaments Tab for further details </span>
+</div>
+`
+
+cdiv.appendChild(content);
+cdiv.appendChild(ndiv);
+mdiv.appendChild(cdiv);
+iddiv.appendChild(mdiv);
+newtndiv.appendChild(iddiv);
+
+document.body.appendChild(newtndiv);
+}
+
+function viewtrn()
+{
+  window.location.replace("tournaments.html");
+}
+
+
 function TournamentForm()
 {
     var tndiv = document.createElement('div');
@@ -370,6 +413,31 @@ $(document).on("click","#joinbtn", function(){
 });
  
 
+/*
 $(document).on("click","#showbtn", function(){
   window.location.replace("JoinedTrn.html");
+  
+});
+*/
+
+$(document).on("click","#showbtn", function(){
+  
+  var d = document.cookie.split(";");
+  if(d[1] == null){
+ var email = document.cookie.split("=")[1];
+  }else{
+      var email= d[0].split("=")[1];
+  }
+
+     $.post('JoinedTournaments', {
+         email : email
+     }, function(responseText) {
+
+      showTour(responseText);
+      document.getElementById('id02').style.display='block';
+       
+     });
+
+
+ 
 });

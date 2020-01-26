@@ -65,7 +65,7 @@ selectingPlayers_div.appendChild(dropdown);
 
 
 $(document).on("click","#submitbtn", function(){
-    alert("hey");
+    //alert("hey");
     var k = 1;
     var id = String(k);
     var fid = '#player'+id;
@@ -93,3 +93,5 @@ $(document).on("click","#submitbtn", function(){
        });
     });
 
+
+    

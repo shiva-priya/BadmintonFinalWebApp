@@ -1,5 +1,6 @@
 com/badminton/Servlets/PlayerLogIn.class
 com/badminton/TempClass.class
+com/badminton/Servlets/LiveScoreUpdate.class
 com/badminton/Player.class
 com/badminton/Servlets/CreateTournament.class
 com/badminton/Teams.class

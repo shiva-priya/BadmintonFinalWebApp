@@ -4,7 +4,7 @@ function tourLoad(){
 
             if(responseText=="null")
             {
-                alert("No Players to Show!");
+                alert("No Tournaments to Show!");
             }
             else
             {
@@ -62,11 +62,11 @@ function makeui(jsonData)
         var locationT = document.createElement('h3');
         locationT.textContent ="Location : " + location;
 
-        var btn = document.createElement('button');
+      /*  var btn = document.createElement('button');
         btn.textContent = 'Join';
         btn.setAttribute('id',name);
         btn.style.fontSize="large";
-
+*/
 
        
         tagdiv.appendChild(nameT);
@@ -74,7 +74,7 @@ function makeui(jsonData)
         tagdiv.appendChild(runPrizeT);
         tagdiv.appendChild(locationT);
         tagdiv.appendChild(locationT);
-        tagdiv.appendChild(btn);
+  //      tagdiv.appendChild(btn);
         x.appendChild(tagdiv);
         
         i++;

@@ -13,21 +13,20 @@ function loadHome(){
       navbar.setAttribute('id','navbar');
       document.body.appendChild(navbar);
 
-
-     var logo=document.createElement('img');
-      logo.setAttribute('class','logo');
-      logo.src="images/logo.png";
-      navbar.appendChild(logo);
-
-      var img=document.createElement('img');
-      img.setAttribute('class','logo');
-      img.src="images/pbl.png";
-      navbar.appendChild(img);
-
-
       var unorderedlist=document.createElement("ul");
       unorderedlist.setAttribute('class','unlist');
       navbar.appendChild(unorderedlist);
+
+      var imgl=document.createElement("li");
+      imgl.setAttribute('class','listelements');
+      unorderedlist.appendChild(imgl);
+
+      var img=document.createElement('img');
+      img.setAttribute('class','logo');
+      img.src = "https://pngimage.net/wp-content/uploads/2018/05/badminton-logo-png.png";
+     // img.src="images/pbl.png";
+      imgl.appendChild(img);
+
 
 
       var list0=document.createElement("li");
@@ -81,7 +80,7 @@ function loadHome(){
 
     var menu4=document.createElement("a");
      menu4.setAttribute('class',"stats");
-     menu4.href="#";
+     menu4.href="LiveScore.html";
      menu4.textContent= 'Live Score';
      
      list3.appendChild(menu4);
@@ -104,12 +103,43 @@ function loadHome(){
       list5.appendChild(menu6);
    }
     else{
-      var menu6 = document.createElement('input');
-      menu6.setAttribute('type','submit');
-      menu6.setAttribute('value','Log Out');
-      menu6.setAttribute('id','logoutBtn');
+      var menu6 = document.createElement('a');
+      menu6.setAttribute('class','stats');
+      menu6.href="playerDetails.html";
       menu6.style.alignContent = "centre";
+      menu6.textContent= 'Go to DashBoard';
       list5.appendChild(menu6);
+
+      var list6=document.createElement("li");
+      list6.setAttribute('class','listelements');
+      unorderedlist.appendChild(list6);
+
+
+      var menu7 = document.createElement('a');
+      //menu7.setAttribute('type','button');
+      menu7.setAttribute('class','xyz');
+      menu7.href="#";
+      ///menu7.setAttribute('value','Log Out');
+      menu7.setAttribute('id','logoutBtn');
+      menu7.textContent = "Log Out";
+      menu7.style.alignContent = "centre";
+
+    //  var bspan = document.createElement('span');
+      //bspan.setAttribute('class','glyphicon glyphicon-log-out');
+      //bspan.setAttribute('value','Log Out');
+      //menu7.appendChild(bspan);
+
+      list6.appendChild(menu7);
+
+      /*
+      var menu7 = document.createElement('input');
+      menu7.setAttribute('type','submit');
+      menu7.setAttribute('class','btn btn-default btn-sm');
+      menu7.setAttribute('value','Log Out');
+      menu7.setAttribute('id','logoutBtn');
+      menu7.style.alignContent = "centre";
+      list6.appendChild(menu7);
+      */
     }
     
     

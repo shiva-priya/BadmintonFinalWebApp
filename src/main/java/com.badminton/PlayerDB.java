@@ -150,7 +150,7 @@ public class PlayerDB {
 
     public int addTournament(String tournName, String teamName)
     {
-        String mquery = "insert into TournamentTeams (tournamentName ,teamName) values (' "+ tournName +"','"+teamName+"');";
+        String mquery = "insert into TournamentTeams (tournamentName ,teamName) values ('"+ tournName +"','"+teamName+"');";
         System.out.println(mquery);
         try {
             int k =    stmt.executeUpdate(mquery);
@@ -214,7 +214,7 @@ public class PlayerDB {
 
     public ArrayList<String> getTeams(String trnName) {
         ArrayList<String> result = new ArrayList<>();
-        String query = "select distinct teamName from TournamentTeams where tournamentName = ' "+trnName +"';";
+        String query = "select distinct teamName from TournamentTeams where tournamentName = '"+trnName +"';";
         try
         {
             ResultSet rs = stmt.executeQuery(query);
@@ -230,6 +230,37 @@ public class PlayerDB {
         catch (SQLException e)
         {
             return result;
+        }
+    }
+
+    public int updatePlayerPoints(String player, int points)
+    {
+        try
+        {
+            int k=0;
+            String query ="select max(Points) from users where firstName ='"+player+"';";
+            ResultSet rs = stmt.executeQuery(query);
+            if (rs.next())
+            {
+                k = rs.getInt(1);
+                System.out.println("this is k "+k);
+            }
+            k= k+points;
+            System.out.println(k);
+
+            String query1 = "update users set Points ="+k+" where firstName ='"+player+"';";
+            int res = stmt.executeUpdate(query1);
+            System.out.println(res);
+            // int k = Integer.parseInt(rs.getString("pts"));
+
+            System.out.println("no ex");
+            return res;
+        }
+        catch (SQLException e)
+        {
+            System.out.println("ex");
+            e.printStackTrace();
+            return 0;
         }
     }
 

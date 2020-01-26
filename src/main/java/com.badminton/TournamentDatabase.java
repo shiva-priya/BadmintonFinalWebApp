@@ -1,5 +1,7 @@
 package com.badminton;
 
+import jnr.ffi.annotations.In;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -53,6 +55,12 @@ public class TournamentDatabase {
         try
         {
             ResultSet res = stmt.executeQuery(query);
+           /* while(res.next())
+            {
+                System.out.println(res.getString("trnName"));
+            }
+
+            */
             return res;
         }
         catch (SQLException e  )
@@ -79,6 +87,69 @@ public class TournamentDatabase {
         catch (SQLException e)
         {
             return 0;
+        }
+    }
+
+    public int liveupdate(String query)
+    {
+        try
+        {
+            return  stmt.executeUpdate(query);
+        }
+        catch (SQLException e)
+        {
+            return 0;
+        }
+    }
+
+    public int updateTeamPoints(String team, int points, String tourn)
+    {
+
+        try
+        {
+            int k=0;
+            String query ="select max(teamPoints) as pts from TournamentTeams where teamName ='"+team+
+                    "' and tournamentName ='"+tourn+"';";
+            ResultSet rs = stmt.executeQuery(query);
+            if (rs.next())
+            {
+                 k = rs.getInt(1);
+                System.out.println("this is k "+k);
+            }
+            k= k+points;
+            System.out.println(k);
+
+            String query1 = "update TournamentTeams set teamPoints ="+k+" where teamName ='"+team+
+                    "' and tournamentName ='"+tourn+"';";
+            int res = stmt.executeUpdate(query1);
+            System.out.println(res);
+           // int k = Integer.parseInt(rs.getString("pts"));
+
+            System.out.println("no ex");
+            return res;
+        }
+        catch (SQLException e)
+        {
+            System.out.println("ex");
+            e.printStackTrace();
+            return 0;
+        }
+
+    }
+
+    public ResultSet getliveScore()
+    {
+        String query = "select * from LiveUpdate where iid = (select max(iid) from LiveUpdate);";
+        try
+        {
+            String update = "";
+            ResultSet res = stmt.executeQuery(query);
+
+            return res;
+        }
+        catch (SQLException e )
+        {
+            return null;
         }
     }
 

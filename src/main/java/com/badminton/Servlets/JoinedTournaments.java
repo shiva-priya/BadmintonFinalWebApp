@@ -27,6 +27,19 @@ public class JoinedTournaments extends HttpServlet {
 
         TournamentDatabase db = new TournamentDatabase();
         ResultSet rs = db.getJoined(email);
+        String result = "";
+        int k =1;
+        try {
+            while (rs.next()) {
+                result = result + (k++) + ". "+ rs.getString("trnName")+ " \n";
+            }
+        }
+        catch (SQLException e)
+        {
+            result = result + "f";
+        }
+
+        out.write(result);
 
         /*
 

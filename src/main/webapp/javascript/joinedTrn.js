@@ -1,6 +1,16 @@
 function tourLoad(){
     loadHome();
-        $.post('JoinedTournaments', {}, function(responseText) {
+
+    var d = document.cookie.split(";");
+     if(d[1] == null){
+    var email = document.cookie.split("=")[1];
+     }else{
+         var email= d[0].split("=")[1];
+     }
+
+        $.post('JoinedTournaments', {
+            email : email
+        }, function(responseText) {
 
             if(responseText=="null")
             {
@@ -8,8 +18,8 @@ function tourLoad(){
             }
             else
             {
-                alert(responseText);
-                makeui(responseText);
+                alert(responseText + "from servlet");
+              //  makeui(responseText);
                // alert(responseText.legth)
               // alert(deets[0].firstName);
 
@@ -19,7 +29,7 @@ function tourLoad(){
         });
 }
 
-
+/*
 function makeui(jsonData)
 {
     var maindiv = document.createElement('div');
@@ -76,3 +86,4 @@ function makeui(jsonData)
     document.body.appendChild(maindiv);
 }
 
+*/
