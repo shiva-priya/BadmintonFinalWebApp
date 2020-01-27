@@ -1,6 +1,10 @@
 package com.badminton;
 
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import jnr.ffi.annotations.In;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -137,17 +141,59 @@ public class TournamentDatabase {
 
     }
 
-    public ResultSet getliveScore()
-    {
+    public JsonObject getliveScore() throws SQLException {
         String query = "select * from LiveUpdate where iid = (select max(iid) from LiveUpdate);";
+        System.out.println("init");
         try
         {
             String update = "";
             ResultSet res = stmt.executeQuery(query);
+            System.out.println(res);
+          //  String jk = "{ \"name\": \"Baeldung\", \"java\": true }";
+            JSONObject jo = new JSONObject();
+            String winner ="";
+            String tname = "";
+            while (res.next()) {
 
-            return res;
+              //  jo.put("name",res.getString("tname"));
+                //System.out.println(jo+ " json obj");
+
+                update += "{\"Tournament\": " + res.getString("tname") + ",\"MatchID\": " + res.getString("mid") +
+                        ",\"team1\":"
+                        + res.getString("team1") + ",\"team2\":" + res.getString("team2") + ",\"SetNo\": "
+                        + res.getString("setNo") +
+                        ",\"Player1\":" + res.getString("player1") + ",\"Player2\":" + res.getString("player2") +
+                        ",\"WONBY\":" + res.getString("winner");
+                winner = res.getString("winner");
+                tname = res.getString("tname");
+
+            }
+            System.out.println(winner);
+            String wquery = " select teamPoints from TournamentTeams where teamName ='" +winner+
+                    "' and tournamentName ='"+tname+"';";
+            System.out.println(wquery);
+
+            ResultSet winteam = stmt.executeQuery(wquery);
+
+            while(winteam.next())
+            {
+                update += ",\"points\":"+winteam.getString("teamPoints")+"}";
+            }
+
+            System.out.println(update);
+
+            JsonObject jsonObject = new JsonParser().parse(update).getAsJsonObject();
+            System.out.println(jsonObject + "is json");
+            String json = res.toString();
+
+            //System.out.println(json + "hf");
+
+
+            return jsonObject;
+        //    return update;
+         //   return jo;
         }
-        catch (SQLException e )
+        catch (SQLException e)
         {
             return null;
         }

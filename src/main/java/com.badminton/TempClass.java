@@ -1,7 +1,14 @@
 package com.badminton;
 
 import com.badminton.Servlets.Scheduler;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import jdk.nashorn.internal.parser.JSONParser;
+import org.json.JSONObject;
 
+
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -10,12 +17,55 @@ import java.util.Date;
 
 public class TempClass {
 
-    public static void main(String args[]) throws ParseException {
+    public static void main(String args[]) throws ParseException, SQLException {
 
         TournamentDatabase db = new TournamentDatabase();
+        db.getliveScore();
+        /*
+
+       // JSONParser parser = new JSONParser();
+        String k = "{\"name\":\"prya\"}";
+      //  JSONObject json = (JSONObject) parser.parse(k);
+
+        String a = "hey";
+          //     out.format("json");
+        /*
+        String update = "";
+        try {
+            while (res.next()) {
+
+
+                String jk = "{ \"name\": \"Baeldung\", \"java\": true }";
+                JsonObject jsonObject = new JsonParser().parse(jk).getAsJsonObject();
+                System.out.println(jsonObject);
+
+
+                update += "{\"Tournament\": " + res.getString("tname") + "\"MatchID\": " + res.getString("mid") +
+                        "\"team1\":"
+                        + res.getString("team1") + "\"team2\":" + res.getString("team2") + "\"SetNo\": "
+                        + res.getString("setNo") +
+                        "\"Player1\":" + res.getString("player1") + "\"Player2\":" + res.getString("player2") +
+                        "\"WONBY\":" + res.getString("winner");
+                System.out.println(update);
+
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+
+         */
+        //String json = res.toString();
+
+      /*  String jk = "{ \"name\":"+a+", \"java\": true }";
+        JsonObject jsonObject = new JsonParser().parse(jk).getAsJsonObject();
+        System.out.println(jsonObject);
+
+
+         */
+
         //PlayerDB pdb = new PlayerDB();
         //pdb.updatePlayerPoints("shiva",3);
-        db.getliveScore();
+       // db.getliveScore();
 
         //db.getJoined("spriya@a");
       //  db.updateTeamPoints("purple",3," summer");

@@ -4,6 +4,9 @@ package com.badminton.Servlets;
 import com.badminton.PlayerDB;
 import com.badminton.Tournament;
 import com.badminton.TournamentDatabase;
+import com.google.gson.*;
+import com.google.gson.JsonParser;
+import org.json.JSONObject;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -51,26 +54,17 @@ public class LiveScoreUpdate extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+      //  resp.setContentType( "application/json" );
         PrintWriter out = resp.getWriter();
      //   out.write("hey called");
         TournamentDatabase tdb = new TournamentDatabase();
-        ResultSet res = tdb.getliveScore();
-        String update = "";
+        JsonObject res = null;
         try {
-            while (res.next()) {
-
-                update += "Tournament : " + res.getString("tname") + "\nMatch ID : " + res.getString("mid") + "\nPlayed Between "
-                        + res.getString("team1") + " and " + res.getString("team2") + "\nSet No : " + res.getString("setNo") +
-                        "\nPlayer 1 : " + res.getString("player1") + " Vs " + "Player 2 : " + res.getString("player2") +
-                        "\nWON BY : " + res.getString("winner");
-                System.out.println(update);
-
-            }
+            res = tdb.getliveScore();
         } catch (SQLException e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
-        System.out.println(update + "in serv");
-        out.write(update);
+        out.write(res.toString());
        // out.write("hello");
 
     }
