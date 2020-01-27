@@ -64,7 +64,7 @@ function makeUi(responseText)
     tdiv.setAttribute('class','tdiv');
 
     var wpts = document.createElement('h1');
-    wpts.textContent = winner +" TOTAL POINTS "+wptn;
+    wpts.textContent ="Team "+ winner +" Total Points "+wptn;
 
     tdiv.appendChild(wpts);
 
