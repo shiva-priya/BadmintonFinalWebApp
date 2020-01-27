@@ -7,11 +7,13 @@
 }
 
 #tdiv{
-    float: right;
-    height: 75%;
-    width: 44%;
-    margin-left:20px;
-    margin-top:30px;
+   float: right;
+       width: 550px;
+       margin: 35px;
+       display: grid;
+       margin-right: 180px;
+
+
 }
 
 .card
@@ -55,19 +57,29 @@
     padding: 4%;
 }
 
-#tbutton{
-  float: right;
-  margin-right: 35%;
-  margin-top: 6%;
-  padding: 3%;
+/*#tbutton{
+     float: right;
+     margin-right: 590px;
+     margin-top: 0px;
+     padding: 4%;
+
+}
+*/
+.adfun{
+
+     margin: 20px;
+     margin-left: 60%;
+     padding: 8px;
+     border: 7px solid cadetblue;
+     height: 70%;
+     width: 50%;
+
+}
+.adfun:hover
+{
+  box-shadow: 0 0 10px 8px rgb(34, 235, 208);
 }
 
-#adminbtn{
-  float: right;
-  margin-right: 35%;
-  margin-top: 6%;
-  padding: 3%;
-}
 
 body {
   font-family: Arial, Helvetica, sans-serif;
@@ -195,4 +207,12 @@ span.psw {
   .cancelbtn {
      width: 100%;
   }
+}
+
+.tourbtn
+{
+    background-color: rgb(10, 89, 92);
+    width: auto;
+    padding: 10px 18px;
+    float: right;
 }

@@ -205,7 +205,7 @@ function showTour(responseText){
 
   var content = document.createElement('div');
   content.setAttribute('class','container');
-  content.innerText = responseText ;
+  content.innerText ="TOURNAMENTS YOU JOINED : \n\n"+ responseText ;
 
   var ndiv = document.createElement('div');
   ndiv.innerHTML =
@@ -213,7 +213,7 @@ function showTour(responseText){
   ` <div class="container" style="background-color:#f1f1f1">
   <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
   <button type="button" onclick="viewtrn()" class="tourbtn">View All Tournaments</button>
-  <span class="psw">Click on Toournaments Tab for further details </span>
+  
 </div>
 `
 

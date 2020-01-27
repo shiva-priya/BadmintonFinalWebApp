@@ -13,28 +13,31 @@ import java.sql.Statement;
 public class TournamentDatabase {
     Database db = new Database();
     Statement stmt;
-    public TournamentDatabase(){ stmt = db.dbConnection();}
 
-    public void createTournament(String name,String wPrize,String rPrize,String loc,String email){
+    public TournamentDatabase() {
+        stmt = db.dbConnection();
+    }
+
+    public void createTournament(String name, String wPrize, String rPrize, String loc, String email) {
         PlayerDB pdb = new PlayerDB();
         String id = pdb.empIdOfPlayer(email);
 
-            try {
-                String query = "insert into tourmentable(name,winPrize,runPrize,location,empId) values('" + name + "','" + wPrize + "','" + rPrize + "','" + loc + "','"+id+"') ;";
-                System.out.println(query);
-                int k  = stmt.executeUpdate(query);
-                System.out.println(k);
-            }catch (SQLException s){
-                s.printStackTrace();
-            }
+        try {
+            String query = "insert into tourmentable(name,winPrize,runPrize,location,empId) values('" + name + "','" + wPrize + "','" + rPrize + "','" + loc + "','" + id + "') ;";
+            System.out.println(query);
+            int k = stmt.executeUpdate(query);
+            System.out.println(k);
+        } catch (SQLException s) {
+            s.printStackTrace();
+        }
 
     }
 
-    public String empIdOfTour(String email){
+    public String empIdOfTour(String email) {
         PlayerDB pdb = new PlayerDB();
         String id = pdb.empIdOfPlayer(email);
-        try{
-            String query = "select name from tournamentable where empId = '"+id+"' ;";
+        try {
+            String query = "select name from tournamentable where empId = '" + id + "' ;";
             ResultSet rs = stmt.executeQuery(query);
             return rs.getString("name");
         } catch (SQLException e) {
@@ -43,8 +46,8 @@ public class TournamentDatabase {
         }
     }
 
-    public ResultSet getAll(){
-        try{
+    public ResultSet getAll() {
+        try {
             String query = "select * from tourmentable";
             return stmt.executeQuery(query);
         } catch (SQLException e) {
@@ -53,11 +56,9 @@ public class TournamentDatabase {
         }
     }
 
-    public ResultSet getJoined(String email)
-    {
-        String query = "select distinct trnName from RegisteredTournaments where email ='"+email+"';";
-        try
-        {
+    public ResultSet getJoined(String email) {
+        String query = "select distinct trnName from RegisteredTournaments where email ='" + email + "';";
+        try {
             ResultSet res = stmt.executeQuery(query);
            /* while(res.next())
             {
@@ -66,74 +67,59 @@ public class TournamentDatabase {
 
             */
             return res;
-        }
-        catch (SQLException e  )
-        {
+        } catch (SQLException e) {
             return null;
         }
     }
 
 
-    public int joinTourn(String email, String trnName)
-    {
-        String query = "insert into RegisteredTournaments(email, trnName) values ('"+email +"','"+trnName+"');";
+    public int joinTourn(String email, String trnName) {
+        String query = "insert into RegisteredTournaments(email, trnName) values ('" + email + "','" + trnName + "');";
         System.out.println("In joinTourn ");
-        try
-        {
+        try {
             System.out.println(query);
-           int  rs = stmt.executeUpdate(query);
-         //   System.out.println(rs.next());
-           // return rs.next();
+            int rs = stmt.executeUpdate(query);
+            //   System.out.println(rs.next());
+            // return rs.next();
             System.out.println(rs);
             return rs;
 
-        }
-        catch (SQLException e)
-        {
+        } catch (SQLException e) {
             return 0;
         }
     }
 
-    public int liveupdate(String query)
-    {
-        try
-        {
-            return  stmt.executeUpdate(query);
-        }
-        catch (SQLException e)
-        {
+    public int liveupdate(String query) {
+        try {
+            return stmt.executeUpdate(query);
+        } catch (SQLException e) {
             return 0;
         }
     }
 
-    public int updateTeamPoints(String team, int points, String tourn)
-    {
+    public int updateTeamPoints(String team, int points, String tourn) {
 
-        try
-        {
-            int k=0;
-            String query ="select max(teamPoints) as pts from TournamentTeams where teamName ='"+team+
-                    "' and tournamentName ='"+tourn+"';";
+        try {
+            int k = 0;
+            String query = "select max(teamPoints) as pts from TournamentTeams where teamName ='" + team +
+                    "' and tournamentName ='" + tourn + "';";
             ResultSet rs = stmt.executeQuery(query);
-            if (rs.next())
-            {
-                 k = rs.getInt(1);
-                System.out.println("this is k "+k);
+            if (rs.next()) {
+                k = rs.getInt(1);
+                System.out.println("this is k " + k);
             }
-            k= k+points;
+            k = k + points;
             System.out.println(k);
 
-            String query1 = "update TournamentTeams set teamPoints ="+k+" where teamName ='"+team+
-                    "' and tournamentName ='"+tourn+"';";
+            String query1 = "update TournamentTeams set teamPoints =" + k + " where teamName ='" + team +
+                    "' and tournamentName ='" + tourn + "';";
             int res = stmt.executeUpdate(query1);
             System.out.println(res);
-           // int k = Integer.parseInt(rs.getString("pts"));
+            // int k = Integer.parseInt(rs.getString("pts"));
 
             System.out.println("no ex");
             return res;
-        }
-        catch (SQLException e)
-        {
+        } catch (SQLException e) {
             System.out.println("ex");
             e.printStackTrace();
             return 0;
@@ -144,18 +130,17 @@ public class TournamentDatabase {
     public JsonObject getliveScore() throws SQLException {
         String query = "select * from LiveUpdate where iid = (select max(iid) from LiveUpdate);";
         System.out.println("init");
-        try
-        {
+        try {
             String update = "";
             ResultSet res = stmt.executeQuery(query);
             System.out.println(res);
-          //  String jk = "{ \"name\": \"Baeldung\", \"java\": true }";
+            //  String jk = "{ \"name\": \"Baeldung\", \"java\": true }";
             JSONObject jo = new JSONObject();
-            String winner ="";
+            String winner = "";
             String tname = "";
             while (res.next()) {
 
-              //  jo.put("name",res.getString("tname"));
+                //  jo.put("name",res.getString("tname"));
                 //System.out.println(jo+ " json obj");
 
                 update += "{\"Tournament\": " + res.getString("tname") + ",\"MatchID\": " + res.getString("mid") +
@@ -165,19 +150,20 @@ public class TournamentDatabase {
                         ",\"Player1\":" + res.getString("player1") + ",\"Player2\":" + res.getString("player2") +
                         ",\"WONBY\":" + res.getString("winner");
                 winner = res.getString("winner");
+                System.out.println(winner);
                 tname = res.getString("tname");
+                System.out.println(tname);
 
             }
             System.out.println(winner);
-            String wquery = " select teamPoints from TournamentTeams where teamName ='" +winner+
-                    "' and tournamentName ='"+tname+"';";
+            String wquery = " select teamPoints from TournamentTeams where teamName ='" + winner +
+                    "' and tournamentName ='" + tname + "';";
             System.out.println(wquery);
 
             ResultSet winteam = stmt.executeQuery(wquery);
 
-            while(winteam.next())
-            {
-                update += ",\"points\":"+winteam.getString("teamPoints")+"}";
+            while (winteam.next()) {
+                update += ",\"points\":" + winteam.getString("teamPoints") + "}";
             }
 
             System.out.println(update);
@@ -190,14 +176,50 @@ public class TournamentDatabase {
 
 
             return jsonObject;
-        //    return update;
-         //   return jo;
-        }
-        catch (SQLException e)
-        {
+            //    return update;
+            //   return jo;
+        } catch (SQLException e) {
             return null;
         }
     }
 
+    public JsonObject homeDetails() {
+        String pquery = "select * from users where Points = (select max(Points) from users);";
+        String tquery = "select * from TournamentTeams where teamPoints = (select max(teamPoints) from TournamentTeams);";
+        System.out.println(pquery);
+        try {
+            ResultSet res = stmt.executeQuery(pquery);
+            String update = "";
+            System.out.println(res);
+            JSONObject jo = new JSONObject();
+            String winner = "";
+            String tname = "";
+            while (res.next()) {
+                update += "{\"fname\": " + res.getString("firstName") + ",\"lname\": " + res.getString("lastName") +
+                        ",\"image\": \""
+                        + res.getString("image") + "\",\"points\":" + res.getString("Points")
+                        + ",\"team\":" + res.getString("team");
+            }
+            System.out.println(update);
 
+
+            ResultSet tres = stmt.executeQuery(tquery);
+            while (tres.next()) {
+
+                update += ",\"trname\": " + tres.getString("tournamentName") + ",\"tmname\": " + tres.getString("teamName") +
+                        ",\"pts\":" + tres.getString("teamPoints") + "}";
+            }
+            System.out.println(update);
+            System.out.println(update.charAt(45));
+
+            JsonObject jsonObject = new JsonParser().parse(update).getAsJsonObject();
+            System.out.println(jsonObject + "is json");
+            return jsonObject;
+
+        } catch (SQLException e) {
+            System.out.println(e);
+            return null;
+        }
+    }
 }
+
