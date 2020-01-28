@@ -98,9 +98,22 @@ function loadHome(){
    if(cookie.length <2){
       var menu6=document.createElement("a");
       menu6.setAttribute('class',"stats");     
-      menu6.href="playerReg.html";
-      menu6.textContent='Log In/Sign Up';
+      menu6.href="rules.html";
+      menu6.textContent='Rules';
       list5.appendChild(menu6);
+
+
+      var menu7=document.createElement("a");
+      menu7.setAttribute('class','stats');
+      menu7.href="playerReg.html";
+      menu7.textContent='Log In/Sign Up';
+     
+
+     var list7=document.createElement("li");
+      list7.setAttribute('class','listelements');
+      unorderedlist.appendChild(list7);
+      list7.appendChild(menu7);
+
    }
     else{
       var menu6 = document.createElement('a');

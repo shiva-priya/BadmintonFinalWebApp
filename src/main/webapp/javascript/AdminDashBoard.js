@@ -68,6 +68,7 @@ function showDisplay()
     var header = document.createElement('h2');
     header.textContent = "Add Team";
     div.appendChild(header);
+
     div.setAttribute('onclick','location.href="addteam.html"');
     var image = document.createElement('img');
     image.src = "https://cdn5.vectorstock.com/i/1000x1000/15/39/people-logo-round-circle-of-group-vector-16671539.jpg";
@@ -103,22 +104,19 @@ function showDisplay()
     div.setAttribute('onclick','location.href="LiveUpdate.html"');
     Conatainer.appendChild(div);
 
-    /*
+    
     var div1 = document.createElement('div');
     div1.setAttribute('class','cards');
     var header = document.createElement('h2');
-    header.textContent = "Settings";
+    header.textContent = "Delete Tournamnet ";
     div1.appendChild(header);
 
     var image = document.createElement('img');
     image.src = "https://www.logolynx.com/images/logolynx/e8/e89a42cafbf304ed5e68f54dafc65950.png";
     image.className = "tasklogo";
     div1.appendChild(image);
-
-   // div.setAttribute('onclick','location.href="LiveUpdate.html"');
+    div1.setAttribute('onclick','location.href="index.html"');
+    
     Conatainer.appendChild(div1);
-    */
-
-
     document.body.appendChild(Conatainer);
 }

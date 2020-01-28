@@ -1,5 +1,6 @@
 function makeRules()
 {
+    loadHome();
     var tndiv = document.createElement('div');
     tndiv.innerHTML =
     `
@@ -215,5 +216,7 @@ This is because the male players are substantially stronger,and can therefore pr
          
         </div>
     `
+
+    document.body.appendChild(tndiv);
     
 }

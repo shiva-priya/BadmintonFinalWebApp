@@ -103,11 +103,11 @@ function showDisplay()
     div.setAttribute('onclick','location.href="LiveUpdate.html"');
     Conatainer.appendChild(div);
 
-    /*
+    
     var div1 = document.createElement('div');
     div1.setAttribute('class','cards');
     var header = document.createElement('h2');
-    header.textContent = "Settings";
+    header.textContent = "Delete Tournamnet ";
     div1.appendChild(header);
 
     var image = document.createElement('img');
@@ -115,10 +115,7 @@ function showDisplay()
     image.className = "tasklogo";
     div1.appendChild(image);
 
-   // div.setAttribute('onclick','location.href="LiveUpdate.html"');
+    div.setAttribute('onclick','location.href=".html"');
     Conatainer.appendChild(div1);
-    */
-
-
     document.body.appendChild(Conatainer);
 }

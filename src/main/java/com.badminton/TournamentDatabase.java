@@ -172,12 +172,8 @@ public class TournamentDatabase {
             System.out.println(jsonObject + "is json");
             String json = res.toString();
 
-            //System.out.println(json + "hf");
-
-
             return jsonObject;
-            //    return update;
-            //   return jo;
+
         } catch (SQLException e) {
             return null;
         }
