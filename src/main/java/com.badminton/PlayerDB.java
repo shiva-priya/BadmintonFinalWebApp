@@ -89,10 +89,10 @@ public class PlayerDB {
     }
 
 
-    public boolean modifyPlayer(String player,String team, String type, int matches, int position, int bidStatus)
+    public boolean modifyPlayer(String player, String type,  int bidStatus)
     {
         try {
-            String query = "update users set team = \"" +team+ "\", type = \"" +type +"\", matchesPlayed = "+matches +", position = "+position+ " where userName = \""+player+"\" ;";
+            String query = "update users set type = \"" +type +"\", bidStatus = \""+ bidStatus+ "\" where firstName = \""+player+"\" ;";
             System.out.println(query);
             int rs = stmt.executeUpdate(query);
             System.out.println(rs);
@@ -148,20 +148,7 @@ public class PlayerDB {
         }
     }
 
-    public int addTournament(String tournName, String teamName)
-    {
-        String mquery = "insert into TournamentTeams (tournamentName ,teamName) values ('"+ tournName +"','"+teamName+"');";
-        System.out.println(mquery);
-        try {
-            int k =    stmt.executeUpdate(mquery);
-            return k;
-        }
-        catch(SQLException e)
-        {
-            return 0;
-        }
 
-    }
 
     public int playersTeamUpdate(String query)
     {
@@ -261,6 +248,15 @@ public class PlayerDB {
             System.out.println("ex");
             e.printStackTrace();
             return 0;
+        }
+    }
+
+    public void updatePlayerRole(String email){
+        String query = "update users set role = 'admin' where email ='"+email+"'";
+        try{
+            stmt.executeUpdate(query);
+        }catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 

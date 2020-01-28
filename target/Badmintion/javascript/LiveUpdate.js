@@ -245,7 +245,7 @@ $(document).on("click","#s2", function(){
       var set = 2;
       var sp1 = $('#s21').val();
       var sp2 = $('#s22').val();
-      var win = $('#r1').val();
+      var win = $('#r2').val();
          $.post('LiveScoreUpdate', {
             mid : mid,
             t1 : t1,

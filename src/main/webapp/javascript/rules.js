@@ -4,7 +4,6 @@ function makeRules()
     var tndiv = document.createElement('div');
     tndiv.innerHTML =
     `
-
     <h1> BADMINTON RULES</h1>
     <div id="whole_div">
     <H4> Why should we care about the rules?</H4>
@@ -215,6 +214,7 @@ This is because the male players are substantially stronger,and can therefore pr
         </p>
          
         </div>
+
     `
 
     document.body.appendChild(tndiv);

@@ -1,0 +1,36 @@
+
+.main{
+    float: left;
+    width: 480px;
+    height: 500px;
+}
+
+#player,#team,#selectType,#bid,#matches,#position{
+    font-size: 20px;
+    margin:15px;
+
+    border:4px solid gray;
+}
+.submitbutton{
+  font-size: 20px;
+    margin:15px;
+
+    border:4px solid gray;
+}
+
+h1
+{
+    color: blanchedalmond;
+}
+
+
+.text{
+    font-size: 20px;
+    font-family: sans-serif;
+    color: blanchedalmond;
+}
+body{
+    background-color: blanchedalmond;
+    widows: 100%;
+    height:100%;
+}

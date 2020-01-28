@@ -81,12 +81,14 @@ function showDisplay()
     div.setAttribute('class','cards');
     var header = document.createElement('h2');
     header.textContent = "Modify Player";
+
     div.appendChild(header);
 
     var image = document.createElement('img');
     image.src = "https://cdn4.vectorstock.com/i/1000x1000/59/08/badminton-player-in-action-logo-super-lightning-vector-16565908.jpg";
     image.className = "tasklogo";
     div.appendChild(image);
+    div.setAttribute('onclick','location.href="modifyPlayer.html"');
 
     Conatainer.appendChild(div);
 
@@ -115,8 +117,28 @@ function showDisplay()
     image.src = "https://www.logolynx.com/images/logolynx/e8/e89a42cafbf304ed5e68f54dafc65950.png";
     image.className = "tasklogo";
     div1.appendChild(image);
-    div1.setAttribute('onclick','location.href="index.html"');
+    div1.setAttribute('onclick','deleteTournamnet()');
     
     Conatainer.appendChild(div1);
     document.body.appendChild(Conatainer);
+}
+
+
+function deleteTournamnet()
+{
+  //  alert("hey");
+    $.post('DeleteTournament', {}, function(responseText) {
+        //  alert(responseText);
+          if(responseText.includes("p"))
+          {
+              alert("Deleted Tournament");
+              window.location.replace("playerDetails.html");
+          }
+          else
+          {
+              alert("There is some error");
+          }
+         
+
+      });   
 }

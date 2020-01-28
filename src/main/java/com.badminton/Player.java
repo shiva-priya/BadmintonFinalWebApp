@@ -20,16 +20,25 @@ public class Player {
     private String position;
     private String bidStatus; // 1->Sold 0->NotSold -1->did not face bidding, Set to -1 in database as default, Change to 0 when player faces bidding
     private String password;
-    private String tournament;
+
+    private String role;
+
+
+
+
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
     public Player(){}
 
-    public String getTour() {
-        return tournament;
-    }
 
-    public void setTour(String tournament) {
-        this.tournament = tournament;
-    }
+
 
     public String getFirstName() {
         return firstName;
@@ -168,7 +177,8 @@ public class Player {
                 "\", \"age\" : \""+age+
                 "\", \"matchesPlayed\" : \""+matchesPlayed+
                 "\", \"position\" : \""+position+
-                "\", \"tournament\" : \""+ tournament+
+
+                "\", \"role\" : \""+ role+
                 "\", \"bidStatus\" : \""+bidStatus+"\" }")
                 ;
     }
@@ -192,7 +202,8 @@ public class Player {
             player.setPosition(res.getString("position"));
             player.setBidStatus(res.getString("bidStatus"));
             player.setPassword(res.getString("password"));
-            player.setTour(res.getString("tournament"));
+
+            player.setRole(res.getString("role"));
         }
         catch (Exception e){
             e.printStackTrace();

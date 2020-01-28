@@ -6,10 +6,9 @@ import com.badminton.PlayerDB;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 
 @WebServlet(name = "PlayerServlet", urlPatterns = "/PlayerServlet")
@@ -32,9 +31,23 @@ public class PlayerServlet extends HttpServlet {
         int eid =Integer.parseInt( req.getParameter("empId"));
         //String age = req.getParameter("age");
         String pwd = req.getParameter("password");
-
+        PrintWriter out = resp.getWriter();
         PlayerDB database = new PlayerDB();
         database.addPlayer(fname,lname,email,eid,pwd);
+        Cookie cUserName = new Cookie("cookuser", email.trim());
+        System.out.println("login cookie = "+cUserName);
+        System.out.println("login cookie value = "+cUserName.getValue());
+
+        cUserName.setMaxAge(60 * 60 * 24 * 15);// 15 days
+
+        resp.addCookie(cUserName);
+
+
+        HttpSession httpSession = req.getSession();
+        httpSession.setAttribute("sessuser", email.trim());
+        System.out.println("cookie enabled");
+
+        out.write("player");
 
     }
 }

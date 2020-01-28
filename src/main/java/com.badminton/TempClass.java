@@ -20,7 +20,9 @@ public class TempClass {
     public static void main(String args[]) throws ParseException, SQLException {
 
         TournamentDatabase db = new TournamentDatabase();
-        db.homeDetails();
+        //db.updateMatchesPlayed("abc","pramati");
+        db.getWinCount(118,"yellow");
+        db.getWinCount(118,"jingle");
         /*
 
        // JSONParser parser = new JSONParser();

@@ -1,5 +1,7 @@
 package com.badminton.Servlets;
 
+import com.badminton.TournamentDatabase;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,13 +20,23 @@ public class ExistingTournament extends HttpServlet {
 
         PrintWriter out = resp.getWriter();
         String trnName = req.getParameter("trnName");
-        Cookie cTourName = new Cookie("tourName", trnName);
-        cTourName.setMaxAge(60 * 60 * 24 * 15);// 15 days
-        System.out.println(cTourName.getValue());
-        resp.addCookie(cTourName);
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("AdminDashboard.html");
-        System.out.println("tour cookie= "+cTourName.getValue());
-        requestDispatcher.forward(req, resp);
-        out.write("s");
+        String email = req.getParameter("email");
+        TournamentDatabase tdb = new TournamentDatabase();
+
+        int k = tdb.checkAdminTournament(email, trnName);
+        if(k!=1)
+        {
+            out.write("f");
+        }
+        else {
+            Cookie cTourName = new Cookie("tourName", trnName);
+            cTourName.setMaxAge(60 * 60 * 24 * 15);// 15 days
+            System.out.println(cTourName.getValue());
+            resp.addCookie(cTourName);
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("AdminDashboard.html");
+            System.out.println("tour cookie= " + cTourName.getValue());
+            requestDispatcher.forward(req, resp);
+            out.write("s");
+        }
     }
 }

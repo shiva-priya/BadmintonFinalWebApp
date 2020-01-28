@@ -19,8 +19,9 @@ public class AddTeam  extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         PrintWriter out =  resp.getWriter();
-        PlayerDB db;
-        db = new PlayerDB();
+        TeamsDB db;
+        db = new TeamsDB();
+        PlayerDB pdb = new PlayerDB();
         Cookie[] cook = req.getCookies();
         String tournName = cook[2].getValue();
         System.out.println("add team called");
@@ -43,7 +44,7 @@ public class AddTeam  extends HttpServlet {
             String[] name = players[i].trim().split(" ");
             System.out.println(name);
             String query = "update users set team = '"+teamName+"' where firstName = '"+name[0]+"';";
-            int kres =db.playersTeamUpdate(query);
+            int kres =pdb.playersTeamUpdate(query);
             System.out.println(kres);
             System.out.println(query);
         }

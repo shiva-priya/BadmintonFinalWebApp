@@ -1,3 +1,4 @@
+/home/priyad/Documents/TeamProject/badminton/src/main/java/com/badminton/Servlets/TeamStats.java
 /home/priyad/Documents/TeamProject/badminton/src/main/java/com.badminton/TourList.java
 /home/priyad/Documents/TeamProject/badminton/src/main/java/com/badminton/Servlets/AddTeam.java
 /home/priyad/Documents/TeamProject/badminton/src/main/java/com/badminton/Servlets/CreateTournament.java
@@ -11,7 +12,9 @@
 /home/priyad/Documents/TeamProject/badminton/src/main/java/com/badminton/Servlets/PlayerLogIn.java
 /home/priyad/Documents/TeamProject/badminton/src/main/java/com/badminton/Servlets/ExistingTournament.java
 /home/priyad/Documents/TeamProject/badminton/src/main/java/com.badminton/some.java
+/home/priyad/Documents/TeamProject/badminton/src/main/java/com/badminton/Servlets/ModifyPlayerServlet.java
 /home/priyad/Documents/TeamProject/badminton/src/main/java/com.badminton/Admin.java
+/home/priyad/Documents/TeamProject/badminton/src/main/java/com/badminton/Servlets/DeleteTournament.java
 /home/priyad/Documents/TeamProject/badminton/src/main/java/com.badminton/AdminDB.java
 /home/priyad/Documents/TeamProject/badminton/src/main/java/com/badminton/Servlets/ShowTrounaments.java
 /home/priyad/Documents/TeamProject/badminton/src/main/java/com/badminton/Servlets/GetTeamsA.java
@@ -29,6 +32,7 @@
 /home/priyad/Documents/TeamProject/badminton/src/main/java/com.badminton/TempClass.java
 /home/priyad/Documents/TeamProject/badminton/src/main/java/com.badminton/PlayerDB.java
 /home/priyad/Documents/TeamProject/badminton/src/main/java/com.badminton/Database.java
+/home/priyad/Documents/TeamProject/badminton/src/main/java/com.badminton/TeamsList.java
 /home/priyad/Documents/TeamProject/badminton/src/main/java/com/badminton/Servlets/GetPlayersA.java
 /home/priyad/Documents/TeamProject/badminton/src/main/java/com/badminton/Servlets/Adminlog.java
 /home/priyad/Documents/TeamProject/badminton/src/main/java/com.badminton/NewPlayer.java

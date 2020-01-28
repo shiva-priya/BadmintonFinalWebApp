@@ -2,6 +2,7 @@ package com.badminton;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.google.gson.stream.JsonReader;
 import jnr.ffi.annotations.In;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -12,6 +13,7 @@ import java.sql.Statement;
 
 public class TournamentDatabase {
     Database db = new Database();
+    //JsonReader.setLenient(true);
     Statement stmt;
 
     public TournamentDatabase() {
@@ -75,14 +77,22 @@ public class TournamentDatabase {
 
     public int joinTourn(String email, String trnName) {
         String query = "insert into RegisteredTournaments(email, trnName) values ('" + email + "','" + trnName + "');";
+        String checkQuery = "select tournId from tourmentable where name ='"+trnName+"';";
         System.out.println("In joinTourn ");
         try {
-            System.out.println(query);
-            int rs = stmt.executeUpdate(query);
-            //   System.out.println(rs.next());
-            // return rs.next();
-            System.out.println(rs);
-            return rs;
+            ResultSet ra = stmt.executeQuery(checkQuery);
+            if(ra.next()) {
+                System.out.println(query);
+                int rs = stmt.executeUpdate(query);
+                //   System.out.println(rs.next());
+                // return rs.next();
+                System.out.println(rs);
+                return rs;
+            }
+            else
+            {
+                return 0;
+            }
 
         } catch (SQLException e) {
             return 0;
@@ -200,9 +210,10 @@ public class TournamentDatabase {
 
 
             ResultSet tres = stmt.executeQuery(tquery);
-            while (tres.next()) {
+            if (tres.next()) {
 
-                update += ",\"trname\": " + tres.getString("tournamentName") + ",\"tmname\": " + tres.getString("teamName") +
+                update += ",\"trname\": " + tres.getString("tournamentName") + ",\"tmname\": "
+                        + tres.getString("teamName") +
                         ",\"pts\":" + tres.getString("teamPoints") + "}";
             }
             System.out.println(update);
@@ -217,5 +228,143 @@ public class TournamentDatabase {
             return null;
         }
     }
+
+    public int deleteTournament(String tourName)
+    {
+        String query = "delete from TournamentTeams where tournamentName ='"+tourName+"';";
+        String query2 = "delete from tourmentable where name ='"+tourName+"';";
+        String query3 = "delete from RegisteredTournaments where trnName ='"+tourName+"';";
+        try
+        {
+            int r1 = stmt.executeUpdate(query);
+            int r2 = stmt.executeUpdate(query2);
+            int r3 = stmt.executeUpdate(query3);
+
+            if(r1<0 || r2<0 || r3<0)
+            {
+                System.out.println("failed");
+                return 0;
+            }
+
+           /* if(r1.next()==false || r2.next()==false || r3.next()==false)
+            {
+                System.out.println("failed");
+                return 0;
+            }
+
+            */
+            System.out.println("done");
+            return 1;
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+    public int updateMatchesPlayed(String teamName, String tourName)
+    {
+        String query = "update TournamentTeams set matchesPlayed=matchesPlayed+1 where teamName ='"
+                +teamName+"' and tournamentName='"+tourName+"';";
+        try
+        {
+            int rs = stmt.executeUpdate(query);
+            return rs;
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+    public int getWinCount(int mid, String teamName)
+    {
+        String query = " select count(winner) from LiveUpdate where mid="+mid+" and winner = '"+teamName+"';";
+        int k=0;
+        try
+        {
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next())
+            {
+                k = Integer.parseInt(rs.getString("count(winner)"));
+                System.out.println(k);
+
+            }
+            return k;
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+            return -1;
+        }
+    }
+
+    public int updateWins(String teamName, String tourName)
+    {
+
+
+        String query = "update TournamentTeams set wins=wins+1 where teamName ='"
+                +teamName+"' and tournamentName='"+tourName+"';";
+        try
+        {
+            int rs = stmt.executeUpdate(query);
+            return rs;
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+            return 0;
+        }
+
+    }
+
+    public int updateLosses(String teamName, String tourName)
+    {
+        String query = "update TournamentTeams set lost=lost+1 where teamName ='"
+                +teamName+"' and tournamentName='"+tourName+"';";
+        try
+        {
+            int rs = stmt.executeUpdate(query);
+            return rs;
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+    public int checkAdminTournament(String email, String tourName)
+    {
+        String idquery = "select empId from users where email ='"+email+"';";
+        int eid =0;
+        try
+        {
+            ResultSet rs = stmt.executeQuery(idquery);
+            if(rs.next())
+            {
+               eid = Integer.parseInt(rs.getString("empId"));
+            }
+            String  cquery = "select * from tourmentable where name ='"+tourName+"' and empId ="+eid+";";
+            ResultSet ra = stmt.executeQuery(cquery);
+            if(ra.next())
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+
 }
 

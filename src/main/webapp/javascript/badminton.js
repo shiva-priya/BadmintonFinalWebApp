@@ -6,11 +6,13 @@
 
 function loadHome(){
 
-     
+     var v = 1
 
       var navbar=document.createElement('nav');
       navbar.setAttribute('class','homebar');
       navbar.setAttribute('id','navbar');
+      
+     
       document.body.appendChild(navbar);
 
       var unorderedlist=document.createElement("ul");
@@ -49,7 +51,7 @@ function loadHome(){
 
       var menu1=document.createElement("a");
       menu1.setAttribute('class','stats');
-      menu1.href="#";
+      menu1.href="TeamStats.html";
       menu1.textContent='TeamStats';
       list.appendChild(menu1);
 
@@ -98,7 +100,7 @@ function loadHome(){
    if(cookie.length <2){
       var menu6=document.createElement("a");
       menu6.setAttribute('class',"stats");     
-      menu6.href="rules.html";
+      menu6.setAttribute('onclick','moveTo()')
       menu6.textContent='Rules';
       list5.appendChild(menu6);
 
@@ -155,10 +157,6 @@ function loadHome(){
       */
     }
     
-    
-     
-    
-     
       $(document).on("click","#logoutBtn", function(){
   
             $.post('LogOut', {}, function(responseText) {
@@ -186,7 +184,11 @@ function loadHome(){
 
 }
 
-
+function moveTo(){
+  window.location.replace('rules.html');
+  document.getElementById('home').appendChild(navbar);
+  
+}
 
 
  

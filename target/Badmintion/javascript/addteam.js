@@ -1,5 +1,8 @@
 //main div
-var maindiv = document.createElement('div');
+
+function add(){
+    loadHome();
+    var maindiv = document.createElement('div');
 maindiv.setAttribute('class','main');
 document.body.appendChild(maindiv);
 
@@ -93,5 +96,5 @@ $(document).on("click","#submitbtn", function(){
        });
     });
 
-
+}
     

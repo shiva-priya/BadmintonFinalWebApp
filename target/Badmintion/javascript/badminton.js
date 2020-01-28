@@ -49,7 +49,7 @@ function loadHome(){
 
       var menu1=document.createElement("a");
       menu1.setAttribute('class','stats');
-      menu1.href="#";
+      menu1.href="TeamStats.html";
       menu1.textContent='TeamStats';
       list.appendChild(menu1);
 
@@ -155,10 +155,6 @@ function loadHome(){
       */
     }
     
-    
-     
-    
-     
       $(document).on("click","#logoutBtn", function(){
   
             $.post('LogOut', {}, function(responseText) {

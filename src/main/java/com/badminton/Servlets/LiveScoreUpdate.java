@@ -38,6 +38,30 @@ public class LiveScoreUpdate extends HttpServlet {
         String tournName = cook[2].getValue();
         TournamentDatabase tdb = new TournamentDatabase();
         PlayerDB pdb = new PlayerDB();
+
+
+
+
+
+
+        if(set==3)
+        {
+          //  tdb.check
+            tdb.updateMatchesPlayed(t1,tournName);
+            tdb.updateMatchesPlayed(t2,tournName);
+            int t1w = tdb.getWinCount(mid,t1);
+            int t2w = tdb.getWinCount(mid,t2);
+            if(t1w>t2w)
+            {
+                tdb.updateWins(t1,tournName);
+                tdb.updateLosses(t2,tournName);
+            }
+            else
+            {
+                tdb.updateWins(t2,tournName);
+                tdb.updateLosses(t1,tournName);
+            }
+        }
             String query = "insert into LiveUpdate (mid,tname, team1, team2, player1, player2,setNo,winner) values ( "
                     + mid+",'"+tournName+"','"+t1+"','"+t2+"','"+p1+"','"+p2+"',"+set+",'"+win+"');";
             System.out.println(query);
