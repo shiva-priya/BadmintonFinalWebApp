@@ -215,7 +215,7 @@ function psignUpFunction(){
    ppsignUpButton.setAttribute('type','submit');
    ppsignUpButton.setAttribute('value','Sign Up');
    ppsignUpButton.setAttribute('id','signBtn');
-   ppsignUpButton.setAttribute('onclick','return validatePlayerSignUpForm()');
+   ppsignUpButton.setAttribute('onclick','validatePlayerSignUpForm()');
    ppsignUpButton.style.alignContent = "centre";
 
    pptd1.appendChild(ppfirstNameLabel);
@@ -289,7 +289,7 @@ function validatePlayerSignUpForm() {
       }
   }
   if(aflag === true){
-      alert("SUCCESS");
+      alert("SUCCESS, Please Login to Continue");
   }
   return aflag;
 }

@@ -16,7 +16,7 @@ public class PlayerDB {
 
     public ResultSet getAllPlayers() {
         try {
-            String query = "select * from users where role='player' order by Points desc;";
+            String query = "select * from users order by Points desc;";
             ResultSet rs = stmt.executeQuery(query);
             return rs;
         } catch (SQLException e) {
@@ -260,4 +260,17 @@ public class PlayerDB {
         }
     }
 
+    public void updateMatchesPlayed(String player)
+    {
+        String query = "update users set matchesPlayed=matchesPlayed+1 where firstName ='"+player+"';";
+        System.out.println(query);
+        try
+        {
+            int k = stmt.executeUpdate(query);
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+    }
 }

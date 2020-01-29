@@ -25,10 +25,10 @@ public class TournamentDatabase {
         String id = pdb.empIdOfPlayer(email);
 
         try {
-            String query = "insert into tourmentable(name,winPrize,runPrize,location,empId) values('" + name + "','" + wPrize + "','" + rPrize + "','" + loc + "','" + id + "') ;";
+            String query = "insert into tourmentable(name,winPrize,runPrize,location,empId) values('" + name + "'," + wPrize + "," + rPrize + ",'" + loc + "'," + id +");";
             System.out.println(query);
             int k = stmt.executeUpdate(query);
-            System.out.println(k);
+            System.out.println(k + "is k");
         } catch (SQLException s) {
             s.printStackTrace();
         }

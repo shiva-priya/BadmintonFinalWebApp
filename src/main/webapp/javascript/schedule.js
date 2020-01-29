@@ -193,7 +193,7 @@ function addSchedule(responseText)
                         rounddiv.setAttribute('id','rrdiv');
                   }
             }
-            var tdiv = document.createElement('h6');
+            var tdiv = document.createElement('h2');
             tdiv.textContent = list[i];
             tdiv.setAttribute('class','tdiv');
 

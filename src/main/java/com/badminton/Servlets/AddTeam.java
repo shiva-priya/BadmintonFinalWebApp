@@ -42,14 +42,14 @@ public class AddTeam  extends HttpServlet {
 
         for(int i=0;i<players.length;++i){
             String[] name = players[i].trim().split(" ");
-            System.out.println(name);
+            System.out.println(name + " is name");
             String query = "update users set team = '"+teamName+"' where firstName = '"+name[0]+"';";
             int kres =pdb.playersTeamUpdate(query);
             System.out.println(kres);
             System.out.println(query);
         }
         System.out.println(ja);
-        out.write(ja);
+        out.write("s");
 
     }
 }

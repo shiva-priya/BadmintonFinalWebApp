@@ -39,16 +39,13 @@ public class LiveScoreUpdate extends HttpServlet {
         TournamentDatabase tdb = new TournamentDatabase();
         PlayerDB pdb = new PlayerDB();
 
-
-
-
-
-
         if(set==3)
         {
           //  tdb.check
             tdb.updateMatchesPlayed(t1,tournName);
             tdb.updateMatchesPlayed(t2,tournName);
+            pdb.updateMatchesPlayed(p1);
+            pdb.updateMatchesPlayed(p2);
             int t1w = tdb.getWinCount(mid,t1);
             int t2w = tdb.getWinCount(mid,t2);
             if(t1w>t2w)

@@ -1,7 +1,7 @@
 .text{
     font-family: sans-serif;
     font-size: 30px;
-    color:black;
+    color:rgb(238, 228, 228);
 
 }
 .textbox{
@@ -24,7 +24,7 @@ body{
     padding: 20px;
     color: white;
     border: 5px solid lightblue;
-    background-color: grey;
+    background-color: rgb(43, 38, 38);
     font-size: 16px;
     float: left;
 

@@ -92,7 +92,16 @@ $(document).on("click","#submitbtn", function(){
         teamname : teamname,
         players : arrayofPlayers
        }, function(responseText){
-           //alert(responseText);
+           if(responseText.includes("s"))
+           {
+               alert("Team Added Successfully!");
+               location.reload();
+           }
+           else
+           {
+               alert("Error Occured!");
+               location.reload();
+           }
        });
     });
 

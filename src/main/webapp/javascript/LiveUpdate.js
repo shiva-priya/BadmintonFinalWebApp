@@ -229,6 +229,15 @@ $(document).on("click","#s1", function(){
             sp2 : sp2,
             win : win
          }, function(responseText) {
+            
+            if(responseText.includes("1"))
+            {
+               alert("Updated Score Succesfully !");
+            }
+            else
+            {
+               alert("Error, Try Again :( ")
+            }
     
          //  alert(responseText);
          });
@@ -257,6 +266,16 @@ $(document).on("click","#s2", function(){
             sp2 : sp2,
             win : win
          }, function(responseText) {
+
+            if(responseText.includes("1"))
+            {
+               alert("Updated Score Succesfully !");
+            }
+            else
+            {
+               alert("Error, Try Again :( ")
+            }
+    
     
          //  alert(responseText);
          });
@@ -286,6 +305,17 @@ $(document).on("click","#s3", function(){
             win : win
          }, function(responseText) {
           // alert(responseText);
+
+          if(responseText.includes("1"))
+          {
+             alert("Updated Score Succesfully !");
+          }
+          else
+          {
+             alert("Error, Try Again :( ")
+          }
+  
+
          });
      
     });

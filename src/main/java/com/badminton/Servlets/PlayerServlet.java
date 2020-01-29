@@ -4,6 +4,7 @@ package com.badminton.Servlets;
 import com.badminton.Player;
 import com.badminton.PlayerDB;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
@@ -47,7 +48,10 @@ public class PlayerServlet extends HttpServlet {
         httpSession.setAttribute("sessuser", email.trim());
         System.out.println("cookie enabled");
 
-        out.write("player");
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("playerReg.html");
+        requestDispatcher.forward(req, resp);
+
+
 
     }
 }

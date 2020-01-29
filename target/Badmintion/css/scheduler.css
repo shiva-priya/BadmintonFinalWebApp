@@ -9,7 +9,7 @@
 margin-top: 10px;  
 font-size: 18PX;
 padding: 5px;
-color: darkblue;
+color: rgb(42, 42, 65);
 border-radius: 10px;
 border: 5px solid dimgrey;
 
@@ -19,7 +19,7 @@ border: 5px solid dimgrey;
 
 font-size: 25PX;
 padding: 20px;
-color: darkblue;
+color: rgb(255, 203, 212);
 FONT-SIZE: 20PX;
 margin:10px;
 
@@ -63,4 +63,10 @@ background-size: cover;
     border: black;
     height: 5%;
     width: 30%;
+}
+
+.tdiv:hover
+{
+    background-color: rgb(255, 166, 166);
+    box-shadow: 0 0 10px 8px rgb(52, 208, 255);
 }

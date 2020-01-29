@@ -45,13 +45,13 @@ var type_option=document.createElement('option');
 type_option.textContent="Select";
 
 var type_option1=document.createElement('option');
-type_option1.textContent="Caption";
+type_option1.textContent="Captain";
 
 var type_option2=document.createElement('option');
-type_option2.textContent="marquee";
+type_option2.textContent="Marquee";
 
 var type_option3=document.createElement('option');
-type_option3.textContent="beginner";
+type_option3.textContent="Beginner";
 
 maindiv.appendChild(type_div);
 type_div.appendChild(type);

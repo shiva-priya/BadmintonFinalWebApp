@@ -408,8 +408,6 @@ function goToTour()
                   }
           else{
                 alert("No such Tournament has been Created by You!");
-                window.location.replace("playerDetails  .html");
-               
           }
     });
 

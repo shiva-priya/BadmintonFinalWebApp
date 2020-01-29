@@ -25,6 +25,7 @@ function loadHome(){
 
       var img=document.createElement('img');
       img.setAttribute('class','logo');
+      //img.src="https://www.itvoice.in/wp-content/uploads/2017/07/premati.png";
       img.src = "https://pngimage.net/wp-content/uploads/2018/05/badminton-logo-png.png";
      // img.src="images/pbl.png";
       imgl.appendChild(img);
