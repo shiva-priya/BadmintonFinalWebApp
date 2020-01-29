@@ -6,11 +6,13 @@
 
 function loadHome(){
 
-     
+     var v = 1
 
       var navbar=document.createElement('nav');
       navbar.setAttribute('class','homebar');
       navbar.setAttribute('id','navbar');
+      
+     
       document.body.appendChild(navbar);
 
       var unorderedlist=document.createElement("ul");
@@ -98,7 +100,7 @@ function loadHome(){
    if(cookie.length <2){
       var menu6=document.createElement("a");
       menu6.setAttribute('class',"stats");     
-      menu6.href="rules.html";
+      menu6.setAttribute('onclick','moveTo()')
       menu6.textContent='Rules';
       list5.appendChild(menu6);
 
@@ -168,7 +170,7 @@ function loadHome(){
                          window.location.replace("index.html");
                           }
                   else{
-                        alert(responseText);
+                        //alert(responseText);
                         //window.location.replace("playerReg.html");
                   }
                   var data = document.cookie.split("=");
@@ -182,7 +184,11 @@ function loadHome(){
 
 }
 
-
+function moveTo(){
+  window.location.replace('rules.html');
+  document.getElementById('home').appendChild(navbar);
+  
+}
 
 
  

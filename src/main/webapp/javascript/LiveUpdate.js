@@ -230,7 +230,7 @@ $(document).on("click","#s1", function(){
             win : win
          }, function(responseText) {
     
-           alert(responseText);
+         //  alert(responseText);
          });
      
     });
@@ -258,7 +258,7 @@ $(document).on("click","#s2", function(){
             win : win
          }, function(responseText) {
     
-           alert(responseText);
+         //  alert(responseText);
          });
      
     });
@@ -285,7 +285,7 @@ $(document).on("click","#s3", function(){
             sp2 : sp2,
             win : win
          }, function(responseText) {
-           alert(responseText);
+          // alert(responseText);
          });
      
     });

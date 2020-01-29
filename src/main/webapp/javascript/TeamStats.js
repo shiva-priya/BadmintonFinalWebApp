@@ -21,7 +21,7 @@ function teamStats(){
                         UIfunction(responseText);
                       }
               else{
-                    alert(responseText);
+                 //   alert(responseText);
                     window.location.replace("playerReg.html");
               }
         });

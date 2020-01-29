@@ -94,7 +94,7 @@ function fun(){
     var tourRunP = $('#trunp').val();
    var email = document.cookie.split("=")[1];
        console.log("post method");
-       alert("post method"); 
+       //alert("post method");
          $.post('', {
            trnName : tourName,
            tloc : tourLoc,
@@ -111,11 +111,11 @@ function fun(){
                      //alert("login");
                        window.location.replace("AdminDashboard.html");
                        var c = document.cookie.split(" ");
-                       alert(c[0]);
-                       alert(c[1]);
+                     //  alert(c[0]);
+                     //  alert(c[1]);
                        }
                else{
-                     alert(responseText);
+                   //  alert(responseText);
                      window.location.reload();
                }
               // return false
@@ -127,18 +127,18 @@ function fun(){
 $(document).on("click","#schedule", function(){
 
       var rounds = $('#numOfRounds').val();
-      alert(rounds+ " rounds");
+      //alert(rounds+ " rounds");
       var sdate = $('#ssd').val();
-      alert(sdate + "date");
+      //alert(sdate + "date");
       var mpday = $('#mpd').val();
-      alert(mpday+ " mpd");
+      //alert(mpday+ " mpd");
            $.get('Scheduler', {     
                    rounds : rounds,
                    sdate : sdate,
                    matches : mpday
            }, function(responseText) {
                 
-            alert(responseText);
+           // alert(responseText);
             addSchedule(responseText);
 
             /*
@@ -164,11 +164,11 @@ $(document).on("click","#schedule", function(){
 function addSchedule(responseText)
 {
       var list = JSON.parse(responseText);
-      alert("List is "+list);
+     // alert("List is "+list);
       var len  = Object.keys(list).length;
-      alert(len);
-      alert(list[0]);
-      alert(list[1]);
+      //alert(len);
+     // alert(list[0]);
+     // alert(list[1]);
 
       var scediv = document.createElement('div');
 

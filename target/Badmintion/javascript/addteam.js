@@ -77,22 +77,22 @@ $(document).on("click","#submitbtn", function(){
     {
         if($(fid).val()!='Select player')
         {
-        alert($(fid).val());
+       // alert($(fid).val());
         arr.push($(fid).val())
         }
         k++;
         var id = String(k);
         var fid = '#player'+id;
     }
-    alert(arr);
+   // alert(arr);
     arrayofPlayers = JSON.stringify(arr);
-    alert(arrayofPlayers);
+   // alert(arrayofPlayers);
     var teamname = $('#Tname').val();
     $.post('AddTeam',{
         teamname : teamname,
         players : arrayofPlayers
        }, function(responseText){
-           alert(responseText);
+           //alert(responseText);
        });
     });
 

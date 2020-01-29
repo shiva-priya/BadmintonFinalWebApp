@@ -356,7 +356,7 @@ function onclickF(e){
             trunp : tourRunP,
                   email : email
           }, function(responseText) {
-                    alert(responseText);
+                //    alert(responseText);
                     //e.preventDefault();
                     console.log(responseText);
 
@@ -365,11 +365,11 @@ function onclickF(e){
                       //alert("login");
                         window.location.replace("AdminDashboard.html");
                         var c = document.cookie.split(" ");
-                        alert(c[0]);
-                        alert(c[1]);
+                       // alert(c[0]);
+                      //  alert(c[1]);
                         }
                 else{
-                      alert(responseText);
+                     // alert(responseText);
                       window.location.reload();
                 }
                // return false
@@ -401,8 +401,8 @@ function goToTour()
                 //alert("login");
                   window.location.replace("AdminDashboard.html");
                   var c = document.cookie.split(" ");
-                  alert(c[0]);
-                  alert(c[1]);
+                //  alert(c[0]);
+                //  alert(c[1]);
                   }
           else{
                 alert("No such Tournament has been Created by You!");

@@ -18,7 +18,7 @@ function tourLoad(){
             }
             else
             {
-                alert(responseText + "from servlet");
+               // alert(responseText + "from servlet");
               //  makeui(responseText);
                // alert(responseText.legth)
               // alert(deets[0].firstName);

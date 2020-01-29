@@ -170,7 +170,7 @@ function loadHome(){
                          window.location.replace("index.html");
                           }
                   else{
-                        alert(responseText);
+                        //alert(responseText);
                         //window.location.replace("playerReg.html");
                   }
                   var data = document.cookie.split("=");
