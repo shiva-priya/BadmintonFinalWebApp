@@ -20,12 +20,17 @@ public class Player {
     private String position;
     private String bidStatus; // 1->Sold 0->NotSold -1->did not face bidding, Set to -1 in database as default, Change to 0 when player faces bidding
     private String password;
+    private String points;
 
     private String role;
 
+    public String getPoints() {
+        return points;
+    }
 
-
-
+    public void setPoints(String points) {
+        this.points = points;
+    }
 
     public String getRole() {
         return role;
@@ -179,6 +184,7 @@ public class Player {
                 "\", \"position\" : \""+position+
 
                 "\", \"role\" : \""+ role+
+                "\", \"points\" : \""+ points+
                 "\", \"bidStatus\" : \""+bidStatus+"\" }")
                 ;
     }
@@ -202,7 +208,7 @@ public class Player {
             player.setPosition(res.getString("position"));
             player.setBidStatus(res.getString("bidStatus"));
             player.setPassword(res.getString("password"));
-
+            player.setPoints(res.getString("Points"));
             player.setRole(res.getString("role"));
         }
         catch (Exception e){

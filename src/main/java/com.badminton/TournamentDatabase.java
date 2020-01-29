@@ -172,8 +172,12 @@ public class TournamentDatabase {
 
             ResultSet winteam = stmt.executeQuery(wquery);
 
-            while (winteam.next()) {
+            if (winteam.next()) {
                 update += ",\"points\":" + winteam.getString("teamPoints") + "}";
+            }
+            else
+            {
+                update +="}";
             }
 
             System.out.println(update);

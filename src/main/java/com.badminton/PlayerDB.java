@@ -16,7 +16,7 @@ public class PlayerDB {
 
     public ResultSet getAllPlayers() {
         try {
-            String query = "select * from users where role='player' order by position asc ";
+            String query = "select * from users where role='player' order by Points desc;";
             ResultSet rs = stmt.executeQuery(query);
             return rs;
         } catch (SQLException e) {

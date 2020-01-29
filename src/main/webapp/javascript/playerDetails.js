@@ -49,6 +49,7 @@ function UIfunction(details){
   var bid = player.bidStatus;
   var role = player.role;
   var uid = player.userId;
+  var pts = player.points;
  //alert(player.role);
  var card = document.createElement('div');
  card.setAttribute('class','card');
@@ -66,9 +67,10 @@ function UIfunction(details){
  var emailT = document.createElement('h4');
  emailT.textContent ="Email : " + email;
 
+ /*
  var genderT = document.createElement('h4');
  genderT.textContent ="Gender : " + gender;
-
+*/
 
  var teamT = document.createElement('h4');
  if(team!=null)
@@ -92,8 +94,8 @@ function UIfunction(details){
  {
      var pdiv = document.createElement('div');
      pdiv.setAttribute('id','pdiv');
-     pdiv.innerText = "Your Position is "+pos;
-     posT.textContent = pos;
+     pdiv.innerText = "Your Points are "+pts;
+     posT.textContent = pts;
  }
 
  if(mpl!=0)
@@ -112,7 +114,7 @@ function UIfunction(details){
      card.appendChild(matchesT);
  }
  card.appendChild(emailT);
- card.appendChild(genderT);
+ //card.appendChild(genderT);
  card.appendChild(typeT);
 
  var tdiv = document.createElement('div');
@@ -170,7 +172,7 @@ function oldTour(){
     newtndiv.innerHTML =
   
     `
-    <div id="id02" class="modal">
+    <div id="id01" class="modal">
   
   <div class="modal-content animate" >
     <div class="container">
@@ -183,7 +185,7 @@ function oldTour(){
     </div>
 
     <div class="container" style="background-color:#f1f1f1">
-      <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
       <span class="psw"> Go to created Tournament</span>
     </div>
   </div>
@@ -199,7 +201,7 @@ function showTour(responseText){
  // newtndiv.innerHTML =
 
  var iddiv = document.createElement('div');
- iddiv.setAttribute('id','id02');
+ iddiv.setAttribute('id','id03');
  iddiv.setAttribute('class','modal');
 
   var mdiv = document.createElement('div');
@@ -216,7 +218,7 @@ function showTour(responseText){
   ndiv.innerHTML =
 
   ` <div class="container" style="background-color:#f1f1f1">
-  <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+  <button type="button" onclick="document.getElementById('id03').style.display='none'" class="cancelbtn">Cancel</button>
   <button type="button" onclick="viewtrn()" class="tourbtn">View All Tournaments</button>
   
 </div>
@@ -242,7 +244,7 @@ function TournamentForm()
     var tndiv = document.createElement('div');
     tndiv.innerHTML =
     `
-    <div id="id01" class="modal">
+    <div id="id02" class="modal">
   
   <div class="modal-content animate"  method="post">
     <div class="container">
@@ -263,7 +265,7 @@ function TournamentForm()
     </div>
 
     <div class="container" style="background-color:#f1f1f1">
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+      <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
       <span class="psw"> Your Role will be changed to Admin After creating Tournament</span>
     </div>
   </div>
@@ -321,7 +323,7 @@ function createTags(ele,selector,name){
 $(document).on("click","#adminbtn", function(){
   
     oldTour();
-    document.getElementById('id02').style.display='block';
+    document.getElementById('id01').style.display='block';
       
  
  });
@@ -329,7 +331,7 @@ $(document).on("click","#adminbtn", function(){
 $(document).on("click","#tbutton", function(){
   
    TournamentForm();
-   document.getElementById('id01').style.display='block';
+   document.getElementById('id02').style.display='block';
      
 
 });
@@ -440,7 +442,7 @@ $(document).on("click","#showbtn", function(){
      }, function(responseText) {
 
       showTour(responseText);
-      document.getElementById('id02').style.display='block';
+      document.getElementById('id03').style.display='block';
        
      });
 

@@ -57,9 +57,9 @@ background-size: cover;
 
 .tdiv
 {
-    background-color: grey;
+    background-color: rgb(219, 201, 201);
     padding: 14px 20px;
-    margin: 8px 0;
+    margin-left: 33%;
     border: black;
     height: 5%;
     width: 30%;

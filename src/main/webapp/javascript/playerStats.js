@@ -50,6 +50,7 @@ function makeui(jsonData)
         var bid = player.bidStatus;
         var role = player.role;
         var uid = player.userId;
+        var points = player.points;
 
         var x = document.createElement('div');
         x.setAttribute('class','bdiv');
@@ -65,7 +66,7 @@ function makeui(jsonData)
         tagdiv.setAttribute('class','tagdiv');
         
         var posT = document.createElement('h1');
-        posT.textContent = "Position : "+pos;
+        posT.textContent = "Points : "+points;
 
         var nameT = document.createElement('h1');
         nameT.textContent = fullname;
